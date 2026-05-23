@@ -1,0 +1,22 @@
+{
+  "appName": "Task Manager",
+  "entities": [
+    {
+      "name": "Task",
+      "fields": [
+        { "name": "title", "type": "string", "required": true },
+        { "name": "description", "type": "text", "required": false },
+        { "name": "dueDate", "type": "date", "required": false },
+        { "name": "priority", "type": "enum", "required": false, "values": ["low", "medium", "high"] },
+        { "name": "completed", "type": "boolean", "required": false }
+      ]
+    },
+    {
+      "name": "Category",
+      "fields": [
+        { "name": "name", "type": "string", "required": true },
+        { "name": "color", "type": "string", "required": false }
+      ]
+    }
+  ]
+}

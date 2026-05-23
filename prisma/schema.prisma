@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String  @id @default(uuid())
+  email        String  @unique
+  passwordHash String
+  apps         App[]
+  createdAt    DateTime @default(now())
+}
+
+model App {
+  id            String   @id @default(uuid())
+  name          String
+  slug          String   @unique
+  rawConfig     Json     @db.Json
+  parsedSchema  Json     @db.Json
+  warnings      String[]
+  status        AppStatus @default(ACTIVE)
+  owner         User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId       String
+  entities      Entity[]
+  createdAt     DateTime @default(now())
+}
+
+model Entity {
+  id        String   @id @default(uuid())
+  name      String
+  tableName String   @unique
+  schema    Json     @db.Json
+  app       App      @relation(fields: [appId], references: [id], onDelete: Cascade)
+  appId     String
+  createdAt DateTime @default(now())
+}
+
+enum AppStatus {
+  ACTIVE
+  DEGRADED
+  FAILED
+}

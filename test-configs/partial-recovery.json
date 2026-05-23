@@ -1,0 +1,25 @@
+{
+  "appName": "Partial Recovery App",
+  "entities": [
+    {
+      "name": "ValidEntity",
+      "fields": [
+        { "name": "title", "type": "string", "required": true },
+        { "name": "count", "type": "number", "required": false }
+      ]
+    },
+    {
+      "name": "123Invalid",
+      "fields": [
+        { "name": "name", "type": "string", "required": true }
+      ]
+    },
+    {
+      "name": "GoodEntity",
+      "fields": [
+        { "name": "123badfield", "type": "string", "required": false },
+        { "name": "description", "type": "text", "required": false }
+      ]
+    }
+  ]
+}

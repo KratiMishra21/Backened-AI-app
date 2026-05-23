@@ -1,0 +1,15 @@
+{
+  "entities": [
+    {
+      "name": "Product",
+      "fields": [
+        { "name": "title", "type": "string", "required": true },
+        { "name": "metadata", "type": "json", "required": false },
+        { "name": "tags", "type": "string", "required": false },
+        { "name": "tags", "type": "string", "required": false },
+        { "name": "id", "type": "string", "required": false },
+        { "name": "price", "type": "number", "required": true }
+      ]
+    }
+  ]
+}

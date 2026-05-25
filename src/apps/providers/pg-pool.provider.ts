@@ -18,8 +18,7 @@ export const pgPoolProvider: Provider = {
       max: 20,
       idleTimeoutMillis: 30000,
       connectionTimeoutMillis: 10000, 
-      ssl: {
-    rejectUnauthorized: false,
+      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
      },
     });
   },
